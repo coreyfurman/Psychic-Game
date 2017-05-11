@@ -34,65 +34,67 @@
     var wins = 0;
     var losses = 0;
     var guesses = 9;
+    var yourGuessesSoFar= " ,";
 
     document.onkeyup = function() {
       var userguess = String.fromCharCode(event.keyCode).toLowerCase();
-
     
-      var randomChoice = letters[Math.floor(Math.random()*letters.length)];
-
+      var randomChoice = letters[Math.floor(Math.random()*letters.length)];   
 
     if (userguess=='x' || userguess=='i' || userguess=='p') {      
       if ((userguess=='x') && (randomChoice=='x')) {
           wins++;
-          
+          guesses= 9;
       }
       if ((userguess=='i') && (randomChoice=='i')) {
           wins++;
-
+          guesses= 9;
       } 
       if ((userguess=='p') && (randomChoice=='p')) {
           wins++;
-
+          guesses= 9;
       }
       if ((userguess=='x') && (randomChoice=='p')) {
           wins++;
-
+          guesses= 9;
       }
       if ((userguess=='i') && (randomChoice=='p')) {
           wins++;
-
+          guesses= 9;
       } 
       if ((userguess=='i') && (randomChoice=='x')) {
           wins++;
-
+          guesses= 9;
       } 
       if ((userguess=='p') && (randomChoice=='x')) {
           wins++;
-
+          guesses= 9;
       }
      if ((userguess=='x') && (randomChoice=='i')) {
           wins++;
-
+          guesses= 9;
       }
      if ((userguess=='p') && (randomChoice=='i')) {
           wins++;
-
+          guesses= 9;
       }
 
       }
       else if (userguess!=randomChoice)
       {
-        losses++
         guesses--
-
       }
+      if (guesses<= 0){
+        guesses= 9;
+        losses++;
+      }
+
 
     var html = "<p>Guess what letter I'm thinking of</p>" +
     "<p>wins: " + wins + "</p>" +
     "<p>losses: " + losses + "</p>" +
-    "<p>Guesses left: " + guesses + "</p>";
-
+    "<p>Guesses left: " + guesses + "</p>"
+    "<p>Your guesses so far: " + userguess + "</p>";
 
     document.querySelector('#game').innerHTML = html;
 
@@ -100,12 +102,6 @@
 
 
 </script>
-
-
-
-
-
-
 
       </body>
 </html>
