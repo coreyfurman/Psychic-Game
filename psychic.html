@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Psychic
+    </title>
+  </head>
+  <body>
+    
+    <h1>The Psychic Game</h1>
+    <div id="game">
+      <p>Guess what letter I'm thinking of</p>
+    </div>
+
+
+<!--     I need the user to choose any letter on the keyboard
+    After 9 guesses are made we need to create a new random letter
+    I need to capture those choices
+    and compare them to the choices we are making available
+    Have the 9 guesses count down as the user inputs keys.
+    Have the game reset after 9 letters are chosen and add 1 loss. 
+    or if the the user guesses the correct letter then the wins go up by 1.  -->
+
+<!-- 
+    If guess is equal to random letter then wins go up by 1 and guesses get reset and your guesses so far gets reset.
+
+    Else if letter is not equal to random letter then guesses left goes down by  1 and your guesses so far displays each letter guessed and losses go up by 1. -->
+
+    <script type="text/javascript">
+
+    var letters = ["x", "i", "p"]  
+
+    var wins = 0;
+    var losses = 0;
+    var guesses = 9;
+
+    document.onkeyup = function() {
+      var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+    
+      var randomChoice = letters[Math.floor(Math.random()*letters.length)];
+
+
+    if (userguess=='x' || userguess=='i' || userguess=='p') {      
+      if ((userguess=='x') && (randomChoice=='x')) {
+          wins++;
+          
+      }
+      if ((userguess=='i') && (randomChoice=='i')) {
+          wins++;
+
+      } 
+      if ((userguess=='p') && (randomChoice=='p')) {
+          wins++;
+
+      }
+      if ((userguess=='x') && (randomChoice=='p')) {
+          wins++;
+
+      }
+      if ((userguess=='i') && (randomChoice=='p')) {
+          wins++;
+
+      } 
+      if ((userguess=='i') && (randomChoice=='x')) {
+          wins++;
+
+      } 
+      if ((userguess=='p') && (randomChoice=='x')) {
+          wins++;
+
+      }
+     if ((userguess=='x') && (randomChoice=='i')) {
+          wins++;
+
+      }
+     if ((userguess=='p') && (randomChoice=='i')) {
+          wins++;
+
+      }
+
+      }
+      else if (userguess!=randomChoice)
+      {
+        losses++
+        guesses--
+
+      }
+
+    var html = "<p>Guess what letter I'm thinking of</p>" +
+    "<p>wins: " + wins + "</p>" +
+    "<p>losses: " + losses + "</p>" +
+    "<p>Guesses left: " + guesses + "</p>";
+
+
+    document.querySelector('#game').innerHTML = html;
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+      </body>
+</html>
